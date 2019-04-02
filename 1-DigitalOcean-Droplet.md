@@ -44,6 +44,7 @@ The goal of this article is to provide step-by-step instructions on how to setup
     yum -y install yum-cron
     yum -y install GraphicsMagick-c++-devel;
     yum -y install boost-devel;
+    yum -y install wget;
     ```
 
 
