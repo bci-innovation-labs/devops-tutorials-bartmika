@@ -319,3 +319,82 @@ The goal of this article is to provide step-by-step instructions on how to setup
   ```
   $ sudo vi /etc/redis.conf
   ```
+
+
+### Python
+1. Install our Python dependencies.
+
+    ```
+    sudo yum -y install python36;
+    sudo yum -y install python36-devel;
+    sudo yum -y install python-pip;
+    ```
+
+2. Confirm you installed the correct library.
+
+    ```
+    $ python3.6 -V
+    ```
+
+3. We will next install pip, which will manage software packages for Python:
+
+    ```
+    $ curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+    $ sudo python3.6 get-pip.py
+    $ sudo rm get-pip.py
+    $ sudo pip install --upgrade pip
+    ```
+
+4. Confirm we have the proper version.
+
+    ```
+    $ pip -V
+    ```
+
+5. Install some dependent libraries.
+
+    ```
+    $ sudo pip install virtualenv
+    ```
+
+
+### NodeJS, NPM, React
+
+  1. Install ``Node``.
+
+    ```
+    curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+    sudo yum install -y nodejs
+    ```
+
+  2. Check version.
+
+    ```
+    node --version
+    ```
+
+  3. Install ``npm``.
+
+    ```
+    sudo npm install -g npm@next
+    ```
+
+  4. Check version.
+
+    ```
+    npm --version
+    ```
+
+  5. Install ``react``.
+
+    ```
+    sudo npm install -g create-react-app
+    ```
+
+  6. Check version.
+
+    ```
+    create-react-app --version
+    ```
+
+  7. Would you like to [learn more](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-a-centos-7-server)?

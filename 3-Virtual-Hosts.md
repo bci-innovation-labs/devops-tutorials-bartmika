@@ -22,6 +22,7 @@ The following instructions where modified from [How To Set Up Nginx Server Block
     sudo mkdir -p /var/www/hardy.games/html
     sudo mkdir -p /var/www/mikezhouxun.com/html
     sudo mkdir -p /var/www/roberthao.com/html
+    sudo mkdir -p /var/www/cookingpot.app/html
     ```
 
 3. Grand permission to the regular users.
@@ -31,6 +32,7 @@ The following instructions where modified from [How To Set Up Nginx Server Block
     sudo chown -R $USER:$USER /var/www/hardy.games/html
     sudo chown -R $USER:$USER /var/www/mikezhouxun.com/html
     sudo chown -R $USER:$USER /var/www/roberthao.com/html
+    sudo chown -R $USER:$USER /var/www/cookingpot.app/html
     ```
 
 4. Read access is permitted to generally all users.
@@ -115,20 +117,39 @@ The following instructions where modified from [How To Set Up Nginx Server Block
     </html>
     ```
 
-13. Create new server blocks.
+13. Open sample file.
+
+    ```
+    vi /var/www/cookingpot.app/html/index.html
+    ```
+
+14. Append the file:
+
+    ```
+    <html>
+        <head>
+            <title>Welcome to cookingpot.app!</title>
+        </head>
+        <body>
+           <h1>Success! The cookingpot.app server block is working!</h1>
+        </body>
+    </html>
+    ```
+
+15. Create new server blocks.
 
     ```
     sudo mkdir /etc/nginx/sites-available
     sudo mkdir /etc/nginx/sites-enabled
     ```
 
-14. Create the first server block file.
+16. Create the first server block file.
 
     ```
     vi /etc/nginx/sites-available/leiwei.co.conf
     ```
 
-15. Append file:
+17. Append file:
 
     ```
     server {
@@ -149,13 +170,13 @@ The following instructions where modified from [How To Set Up Nginx Server Block
     }
     ```
 
-16. Create the second server block file.
+18. Create the second server block file.
 
     ```
     vi /etc/nginx/sites-available/hardy.games.conf
     ```
 
-17. Append file:
+19. Append file:
 
     ```
     server {
@@ -176,13 +197,13 @@ The following instructions where modified from [How To Set Up Nginx Server Block
     }
     ```
 
-18. Create the third server block file.
+20. Create the third server block file.
 
     ```
     vi /etc/nginx/sites-available/mikezhouxun.com.conf
     ```
 
-19. Append file:
+21. Append file:
 
     ```
     server {
@@ -203,13 +224,13 @@ The following instructions where modified from [How To Set Up Nginx Server Block
     }
     ```
 
-20. Create the third server block file.
+22. Create the third server block file.
 
     ```
     vi /etc/nginx/sites-available/roberthao.com.conf
     ```
 
-21. Append file:
+23. Append file:
 
     ```
     server {
@@ -230,34 +251,63 @@ The following instructions where modified from [How To Set Up Nginx Server Block
     }
     ```
 
-18. Enable the new server block files.
+24. Create the third server block file.
+
+    ```
+    vi /etc/nginx/sites-available/cookingpot.app.conf
+    ```
+
+25. Append file:
+
+    ```
+    server {
+        listen  80;
+
+        server_name cookingpot.app www.cookingpot.app;
+
+        location / {
+            root  /var/www/cookingpot.app/html;
+            index  index.html index.htm;
+            try_files $uri $uri/ =404;
+        }
+
+        error_page  500 502 503 504  /50x.html;
+        location = /50x.html {
+            root  /usr/share/nginx/html;
+        }
+    }
+    ```
+
+26. Enable the new server block files.
 
     ```
     sudo ln -s /etc/nginx/sites-available/leiwei.co.conf /etc/nginx/sites-enabled/leiwei.co.conf;
     sudo ln -s /etc/nginx/sites-available/hardy.games.conf /etc/nginx/sites-enabled/hardy.games.conf;
     sudo ln -s /etc/nginx/sites-available/mikezhouxun.com.conf /etc/nginx/sites-enabled/mikezhouxun.com.conf;
     sudo ln -s /etc/nginx/sites-available/roberthao.com.conf /etc/nginx/sites-enabled/roberthao.com.conf;
+    sudo ln -s /etc/nginx/sites-available/cookingpot.app.conf /etc/nginx/sites-enabled/cookingpot.app.conf;
     ```
 
-19. Confirm our server can restart.
+25. Confirm our server can restart.
 
     ```
     sudo nginx -t;
     ```
 
-20. Restart the server.
+26 Restart the server.
 
     ```
     sudo systemctl restart nginx
     ```
 
-21. Finally in your browser, check to see that the links work.
+27. Finally in your browser, check to see that the links work.
 
     ```
     http://mikaponics.com
     http://hardy.games
     http://mikezhouxun.com
     http://roberthao.com
+    http://cookingpot.app
     ```
 
 ### Addendum

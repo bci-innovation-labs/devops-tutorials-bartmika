@@ -19,6 +19,7 @@ The following instructions are used to manually setup `letsencrypt` and automati
   $ sudo certbot --nginx -d hardy.games -d hardy.games
   $ sudo certbot --nginx -d mikezhouxun.com -d mikezhouxun.com
   $ sudo certbot --nginx -d roberthao.com -d roberthao.com
+  $ sudo certbot --nginx -d cookingpot.app -d cookingpot.app
   ```
 
 
@@ -70,4 +71,5 @@ Enter the following URL to your browser.
    https://www.ssllabs.com/ssltest/analyze.html?d=hardy.games
    https://www.ssllabs.com/ssltest/analyze.html?d=mikezhouxun.com
    https://www.ssllabs.com/ssltest/analyze.html?d=roberthao.com
+   https://www.ssllabs.com/ssltest/analyze.html?d=cookingpot.app
    ```
